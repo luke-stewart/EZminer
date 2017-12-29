@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EZ Miner</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <!-- <link href="narrow-jumbotron.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron bg-success">
+            <h1 class="display-3 text-center">EZ Miner</h1>
+            <p class="lead text-center">EZ Miner is the simplest way to start mining cryptocurrency!</p>
+
+        </div>
+        <div class="span12" id="form">
+            <form>
+                <div class="form-group ion-text">
+                    <label for="address">Etherum address</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
+                    <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
+
+                    <i class="ion-ios-close-outline i-keyword"></i>
+                </div>
+                <div class="form-group ion-text">
+                    <label for="address">Worker name</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="Optional, but useful if you have multiple rigs">
+                    <i class="ion-ios-close-outline i-keyword"></i>
+                </div>
+                <div class="form-group ion-text">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down">
+                    <i class="ion-ios-close-outline i-keyword"></i>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputOS" id="os">
+                            <option value="0" selected>Operating System?</option>
+                            <option value="WIN">Windows</option>
+                            <option value="LIN">Linux</option>
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputGPU" id="gpu">
+                            <option value="0" selected>Video Card manufacturer?</option>
+                            <option value="NVI">NVIDIA</option>
+                            <option value="AMD">AMD</option>
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputCoin" id="coin">
+                            <option value="0" selected>What would you like to mine?</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <!-- <option value="ZEC">Zcash (ZEC)</option> -->
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputLocation" id="coin">
+                            <option value="0" selected>Choose your closest pool</option>
+                            <option value="USAW">West Coast US</option>
+                            <option value="USAE">East Coast US</option>
+                            <option value="EURO">Europe</option>
+                            <option value="ASIA">Asia</option>
+                        </select>
+                    </div>
+                    
+                        <div class='col-sm-8'>
+                            <button type="button" class="btn btn-primary btn-lg">Configure</button>
+                            <button type="button" class="btn btn-success btn-lg">Start Miner</button>
+                            <button type="button" class="btn btn-danger btn-lg">Stop Miner</button>
+                        </div>
+                    
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+    <!-- <script type ="text/javascript">
+    
+        function WriteToFile(passForm) {
+       
+           set fso = CreateObject("Scripting.FileSystemObject");  
+           set s = fso.CreateTextFile("C:\test.txt", True);
+           s.writeline(document.passForm.inputAddress.value);
+           s.writeline(document.passForm.inputWorker.value);
+           s.writeline(document.passForm.inputEmail.value);
+           s.Close();
+        }
+         </script> -->
+</body>
+
+</html>
