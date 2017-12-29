@@ -1,1 +1,4 @@
 # EZminer
+
+www.ezminer.io
+
