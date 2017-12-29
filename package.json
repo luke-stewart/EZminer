@@ -1,0 +1,19 @@
+{
+  "name": "ezminer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linkadinkadoo/EZminer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linkadinkadoo/EZminer/issues"
+  },
+  "homepage": "https://github.com/linkadinkadoo/EZminer#readme"
+}
