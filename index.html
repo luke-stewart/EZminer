@@ -20,28 +20,26 @@
 </head>
 
 <body>
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="index.html">EZ Miner.io</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">EZ Miner.io</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <div class="jumbotron bg-success">
             <h1 class="display-3 text-center">EZ Miner</h1>
             <p class="lead text-center">Start mining Ethereum in 5 easy steps!</p>
+            <p class="lead text-center">(EZ Miner is currently only available for Windows)</p>
         </div>
         <div class="span12" id="form">
             <form>
@@ -59,11 +57,10 @@
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <Strong>Step 2: </Strong>
-                            <a class="btn btn-dark btn-lg" href="https://github.com/nanopool/genoil-ethereum/releases/download/v1.1.7/ethminer-0.9.41-genoil-1.1.7.zip"
-                                style="margin-left:10px; margin-right:10px;">Download Miner</a>
-                            (Remember where you download the zip file to)
+                            <a class="btn btn-dark btn-lg" href="#" style="margin-left:10px; margin-right:10px;">Download EZ Miner App</a>
                             <br>
-                            <br>Easiest is save to root of the C: drive, for instance C:\EZminer.zip
+                            <br> (Remember where you download the zip file to)
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -72,7 +69,7 @@
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <Strong>Step 3: </Strong>
-                            Extract the Zip file by Right-Clicking on it and choosing "Extract All..."
+                            Extract the EZMiner.zip file by Right-Clicking on it and choosing "Extract All..."
                         </div>
                     </div>
                 </div>
@@ -80,59 +77,8 @@
                 <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
-                            <strong>Step 4: </strong>Configure Miner
-                            <br>
-                            <br>
-                            <label for="address">Your Etherum address</label>
-                            <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
-                            <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
-                            <i class="ion-ios-close-outline i-keyword"></i>
-                        </div>
-                        <div class="form-group ion-text">
-                            <label for="address">Worker name</label>
-                            <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="(Optional) Useful if you have multiple rigs">
-                            <i class="ion-ios-close-outline i-keyword"></i>
-                        </div>
-                        <div class="form-group ion-text">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down">
-                            <i class="ion-ios-close-outline i-keyword"></i>
-                        </div>
-                        <div class='row'>
-                            <div class='col-sm-6'>
-                                <select class="custom-select mb-3 w-100 foc inputOS" id="os">
-                                    <option value="0" selected>Operating System</option>
-                                    <option value="WIN">Windows</option>
-                                    <!-- <option value="LIN">Linux</option> -->
-                                </select>
-                            </div>
-                            <div class='col-sm-6'>
-                                <select class="custom-select mb-3 w-100 foc inputGPU" id="gpu">
-                                    <option value="0" selected>Video Card manufacturer?</option>
-                                    <option value="NVI">NVIDIA</option>
-                                    <option value="AMD">AMD</option>
-                                </select>
-                            </div>
-                            <div class='col-sm-6'>
-                                <select class="custom-select mb-3 w-100 foc inputCoin" id="coin">
-                                    <option value="0" selected>What would you like to mine?</option>
-                                    <option value="ETH">Ethereum (ETH)</option>
-                                    <!-- <option value="ZEC">Zcash (ZEC)</option> -->
-                                </select>
-                            </div>
-                            <div class='col-sm-6'>
-                                <select class="custom-select mb-3 w-100 foc inputLocation" id="coin">
-                                    <option value="0" selected>Choose your closest pool</option>
-                                    <option value="USAW">West Coast US</option>
-                                    <option value="USAE">East Coast US</option>
-                                    <option value="EURO">Europe</option>
-                                    <option value="ASIA">Asia</option>
-                                </select>
-                            </div>
-                            <div class='form-group ion-text'>
-                                <button type="button" class="btn btn-dark btn-lg" style="margin-left:15px; margin-right:10px;">Configure</button>
-                                Save this start.bat file to the Extracted folder from Step 2
-                            </div>
+                            <strong>Step 4: </strong>Configure Miner<br>
+                            <br> In the EZ Miner App, click Configure > Configure EZ Miner. Fill in your Ethereum address and other information, then click the Save Configuration button on the bottom.
                         </div>
                     </div>
                 </div>
@@ -140,13 +86,11 @@
                 <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
-                            <strong>Step 5: </strong>
+                            <strong>Step 5: </strong>Start mining!
                             <br>
-                            <label for="path">File Path to start.bat</label>
-                            <input type="text" class="form-control p-2 foc mb-3 inputFilePath" id="path" placeholder="C:\EZminer\start.bat (Or wherever you saved the files)">
-                            <i class="ion-ios-close-outline i-keyword"></i>
+                            <label for="path">Click the green Start button on the bottom of the Dashboard Screen to start mining</label>
                         </div>
-                        <a class="btn btn-success btn-lg" role="button" id="path-button" style="margin-right:10px; margin-top:10px;" href="C:\\EZminer\\start.bat">Start Miner</a>
+                        
                         <!-- <a href="dashboard.html" class="btn btn-secondary btn-lg" role="button" style="margin-right:5px; margin-top:10px;">Open Dashboard</a> -->
                     </div>
                 </div>
@@ -154,26 +98,8 @@
             </form>
         </div>
     </div>
-    <script type ="text/javascript">
-    
-    function runStartBat (){
-        window.open('file://dotnet/sc/test.bat')
-    }
-
-    
-
-    // document.getElementById("link").setAttribute("href",path)
-    
-        // function WriteToFile(passForm) {
-       
-        //    set fso = CreateObject("Scripting.FileSystemObject");  
-        //    set s = fso.CreateTextFile("C:\test.txt", True);
-        //    s.writeline(document.passForm.inputAddress.value);
-        //    s.writeline(document.passForm.inputWorker.value);
-        //    s.writeline(document.passForm.inputEmail.value);
-        //    s.Close();
-        // }
-         </script>
+    <script type="text/javascript">
+    </script>
 
 </body>
 
