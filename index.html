@@ -20,6 +20,24 @@
 </head>
 
 <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="index.html">EZ Miner.io</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
     <div class="container">
         <div class="jumbotron bg-success">
             <h1 class="display-3 text-center">EZ Miner</h1>
@@ -32,16 +50,16 @@
                         <div class="form-group ion-text">
                             <Strong>Step 1: </Strong>Download an Ethereum wallet so you can get paid. We recommend the Exodus Wallet.
                             If you already have an Ethereum wallet, skip this step.
-                            <a class="btn btn-info btn-lg" href="https://exodusbin.azureedge.net/releases/exodus-windows-x64-1.41.0.exe" style="margin-right:10px; margin-top:15px;">Download Exodus</a>
+                            <a class="btn btn-dark btn-lg" href="https://exodusbin.azureedge.net/releases/exodus-windows-x64-1.41.0.exe" style="margin-right:10px; margin-top:15px;">Download Exodus</a>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="card rounded primary">
+                <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <Strong>Step 2: </Strong>
-                            <a class="btn btn-warning btn-lg" href="https://github.com/nanopool/genoil-ethereum/releases/download/v1.1.7/ethminer-0.9.41-genoil-1.1.7.zip"
+                            <a class="btn btn-dark btn-lg" href="https://github.com/nanopool/genoil-ethereum/releases/download/v1.1.7/ethminer-0.9.41-genoil-1.1.7.zip"
                                 style="margin-left:10px; margin-right:10px;">Download Miner</a>
                             (Remember where you download the zip file to)
                             <br>
@@ -50,7 +68,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="card rounded primary">
+                <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <Strong>Step 3: </Strong>
@@ -59,13 +77,13 @@
                     </div>
                 </div>
                 <br>
-                <div class="card rounded primary">
+                <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <strong>Step 4: </strong>Configure Miner
                             <br>
                             <br>
-                            <label for="address">Etherum address</label>
+                            <label for="address">Your Etherum address</label>
                             <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
                             <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
                             <i class="ion-ios-close-outline i-keyword"></i>
@@ -83,9 +101,9 @@
                         <div class='row'>
                             <div class='col-sm-6'>
                                 <select class="custom-select mb-3 w-100 foc inputOS" id="os">
-                                    <option value="0" selected>Operating System?</option>
+                                    <option value="0" selected>Operating System</option>
                                     <option value="WIN">Windows</option>
-                                    <option value="LIN">Linux</option>
+                                    <!-- <option value="LIN">Linux</option> -->
                                 </select>
                             </div>
                             <div class='col-sm-6'>
@@ -112,14 +130,14 @@
                                 </select>
                             </div>
                             <div class='form-group ion-text'>
-                                <button type="button" class="btn btn-primary btn-lg" style="margin-left:15px; margin-right:10px;">Configure</button>
+                                <button type="button" class="btn btn-dark btn-lg" style="margin-left:15px; margin-right:10px;">Configure</button>
                                 Save this start.bat file to the Extracted folder from Step 2
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="card rounded primary">
+                <div class="card rounded dark">
                     <div class="card-body">
                         <div class="form-group ion-text">
                             <strong>Step 5: </strong>
@@ -128,26 +146,34 @@
                             <input type="text" class="form-control p-2 foc mb-3 inputFilePath" id="path" placeholder="C:\EZminer\start.bat (Or wherever you saved the files)">
                             <i class="ion-ios-close-outline i-keyword"></i>
                         </div>
-                        <a href="C:\EZminer\start.bat" class="btn btn-success btn-lg" role="button" style="margin-right:10px; margin-top:10px;">Start Miner</a>
-                        <a href="#" class="btn btn-secondary btn-lg" role="button" style="margin-right:5px; margin-top:10px;">Open Dashboard</a>
+                        <a class="btn btn-success btn-lg" role="button" id="path-button" style="margin-right:10px; margin-top:10px;" href="C:\\EZminer\\start.bat">Start Miner</a>
+                        <!-- <a href="dashboard.html" class="btn btn-secondary btn-lg" role="button" style="margin-right:5px; margin-top:10px;">Open Dashboard</a> -->
                     </div>
                 </div>
                 <br>
             </form>
         </div>
     </div>
-    <!-- <script type ="text/javascript">
+    <script type ="text/javascript">
     
-        function WriteToFile(passForm) {
+    function runStartBat (){
+        window.open('file://dotnet/sc/test.bat')
+    }
+
+    
+
+    // document.getElementById("link").setAttribute("href",path)
+    
+        // function WriteToFile(passForm) {
        
-           set fso = CreateObject("Scripting.FileSystemObject");  
-           set s = fso.CreateTextFile("C:\test.txt", True);
-           s.writeline(document.passForm.inputAddress.value);
-           s.writeline(document.passForm.inputWorker.value);
-           s.writeline(document.passForm.inputEmail.value);
-           s.Close();
-        }
-         </script> -->
+        //    set fso = CreateObject("Scripting.FileSystemObject");  
+        //    set s = fso.CreateTextFile("C:\test.txt", True);
+        //    s.writeline(document.passForm.inputAddress.value);
+        //    s.writeline(document.passForm.inputWorker.value);
+        //    s.writeline(document.passForm.inputEmail.value);
+        //    s.Close();
+        // }
+         </script>
 
 </body>
 
