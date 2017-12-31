@@ -9,19 +9,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EZ Miner.io</title>
+    <title>EZ Miner App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
-    <!-- <link href="narrow-jumbotron.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-</head>
-<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">EZ Miner App</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- <link href="narrow-jumbotron.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="assets/app.css">
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">EZ Miner</a>
+
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="configure.html">Configure</a>
@@ -33,66 +37,74 @@
           <a class="nav-link" href="help.html">Help</a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </div> -->
 
-<div class="container">
-    <div class="card rounded dark">
-        <div class="card-body">
-            <div class="form-group ion-text">
-                <strong>Configure EZ Miner</strong>
-                <br>
-                <br>
-                <label for="address">Your Etherum address</label>
-                <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
-                <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
-                <i class="ion-ios-close-outline i-keyword"></i>
-            </div>
-            <div class="form-group ion-text">
-                <label for="address">Worker name</label>
-                <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="(Optional) Useful if you have multiple rigs">
-                <i class="ion-ios-close-outline i-keyword"></i>
-            </div>
-            <div class="form-group ion-text">
-                <label for="email">Email</label>
-                <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down">
-                <i class="ion-ios-close-outline i-keyword"></i>
-            </div>
-            <div class='row'>
-                <div class='col-sm-6'>
-                    <select class="custom-select mb-3 w-100 foc inputOS" id="os">
-                        <option value="0" selected>Operating System</option>
-                        <option value="WIN">Windows</option>
-                        <!-- <option value="LIN">Linux</option> -->
-                    </select>
+    </nav>
+    <div class="container">
+        <div class="card rounded dark">
+            <div class="card-body">
+                <div class="form-group ion-text">
+                    <strong>Configure EZ Miner</strong>
+                    <br>
+                    <br>
+                    <label for="address">Your Etherum address</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
+                    <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
+                    <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
-                <div class='col-sm-6'>
-                    <select class="custom-select mb-3 w-100 foc inputGPU" id="gpu">
-                        <option value="0" selected>Video Card manufacturer?</option>
-                        <option value="NVI">NVIDIA</option>
-                        <option value="AMD">AMD</option>
-                    </select>
+                <div class="form-group ion-text">
+                    <label for="address">Worker name</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="(Optional) Useful if you have more than one computer mining">
+                    <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
-                <div class='col-sm-6'>
-                    <select class="custom-select mb-3 w-100 foc inputCoin" id="coin">
-                        <option value="0" selected>What would you like to mine?</option>
-                        <option value="ETH">Ethereum (ETH)</option>
-                        <!-- <option value="ZEC">Zcash (ZEC)</option> -->
-                    </select>
+                <div class="form-group ion-text">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down">
+                    <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
-                <div class='col-sm-6'>
-                    <select class="custom-select mb-3 w-100 foc inputLocation" id="coin">
-                        <option value="0" selected>Choose your closest pool</option>
-                        <option value="USAW">West Coast US</option>
-                        <option value="USAE">East Coast US</option>
-                        <option value="EURO">Europe</option>
-                        <option value="ASIA">Asia</option>
-                    </select>
-                </div>
-                <div class='form-group ion-text'>
-                    <button type="button" class="btn btn-dark btn-lg" style="margin-left:15px; margin-right:10px;">Configure</button>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputOS" id="os">
+                            <option value="0" selected>Operating System</option>
+                            <option value="WIN">Windows</option>
+                            <!-- <option value="LIN">Linux</option> -->
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputGPU" id="gpu">
+                            <option value="0" selected>Video Card brand?</option>
+                            <option value="NVI">NVIDIA</option>
+                            <option value="AMD">AMD</option>
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputCoin" id="coin">
+                            <option value="0" selected>What would you like to mine?</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <!-- <option value="ZEC">Zcash (ZEC)</option> -->
+                        </select>
+                    </div>
+                    <div class='col-sm-6'>
+                        <select class="custom-select mb-3 w-100 foc inputLocation" id="loc">
+                            <option value="0" selected>Choose your closest pool</option>
+                            <option value="eth-us-west1.nanopool.org:9999">West Coast US</option>
+                            <option value="eth-us-east1.nanopool.org:9999">East Coast US</option>
+                            <option value="eth-eu1.nanopool.org:9999">Europe</option>
+                            <option value="eth-asia1.nanopool.org:9999">Asia</option>
+                        </select>
+                    </div>
+                    <div class='form-group ion-text'>
+                        <button type="button" class="btn btn-dark btn-lg" style="margin-left:15px; margin-right:10px;">Configure</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        var blob = new Blob(["ethminer.exe --farm-recheck 1000 -U -S" + $("loc").value + "-FS eth-eu2.nanopool.org:9999 -O" + " #address" + " #worker" + " #email" + " pause"], { type: "text/plain;charset=utf-8" });
+        console.log("blob = " + blob);
+        $("#configure").click(function(){
+            saveAs(blob, "start_cuda.bat");
+        });
+        </script>
+</body>
