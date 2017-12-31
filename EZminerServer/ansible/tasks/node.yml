@@ -1,0 +1,21 @@
+---
+- name: get node install script
+  get_url:
+    url: https://deb.nodesource.com/setup_9.x
+    dest: ./nodesource_setup.sh
+
+- name: add node to debian packages
+  shell: bash nodesource_setup.sh
+
+- name: install node and npm
+  apt: name=nodejs state=present
+
+- name: isntall npm packages
+  shell: npm i
+  args:
+    chdir: ../../vagrant
+
+# - name: start node
+#   shell: npm start
+#   args:
+#     chdir: ../../vagrant
