@@ -13,7 +13,7 @@ let mainWindow
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 700 })
+  mainWindow = new BrowserWindow({ width: 750, height: 750 })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -23,7 +23,7 @@ function createWindow() {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -33,7 +33,6 @@ function createWindow() {
     mainWindow = null
   })
 }
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -58,7 +57,6 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
 
 
 // Menu and MenuItem modules can be used to create custom native menus.
@@ -100,7 +98,7 @@ let template = [{
       })
     }
 
-  }, {
+  // }, {
   //   label: 'Redo',
   //   accelerator: 'Shift+CmdOrCtrl+Z',
   //   role: 'redo'
@@ -168,26 +166,29 @@ let template = [{
         return 'Ctrl+Shift+I'
       }
     })(),
-  //   click: function (item, focusedWindow) {
-  //     if (focusedWindow) {
-  //       focusedWindow.toggleDevTools()
-  //     }
-  //   }
+
+    click: function (item, focusedWindow) {
+      if (focusedWindow) {
+        focusedWindow.toggleDevTools()
+      }
+    }
   // }, {
   //   type: 'separator'
   // }, {
-  //   label: 'App Menu Demo',
-  //   click: function (item, focusedWindow) {
-  //     if (focusedWindow) {
-  //       const options = {
-  //         type: 'info',
-  //         title: 'Application Menu Demo',
-  //         buttons: ['Ok'],
-  //         message: 'This demo is for the Menu section, showing how to create a clickable menu item in the application menu.'
-  //       }
-  //       electron.dialog.showMessageBox(focusedWindow, options, function () { })
-  //     }
-  //   }
+    // label: 'App Menu Demo',
+    // click: function (item, focusedWindow) {
+    //   if (focusedWindow) {
+    //     const options = {
+    //       type: 'info',
+    //       title: 'Application Menu Demo',
+    //       buttons: ['Ok'],
+    //       message: 'This demo is for the Menu section, showing how to create a clickable menu item in the application menu.'
+    //     }
+    //     electron.dialog.showMessageBox(focusedWindow, options, function () { })
+    //   }
+    // }
+
+
   }]
 }, {
   label: 'Window',
@@ -201,8 +202,8 @@ let template = [{
     accelerator: 'CmdOrCtrl+W',
     role: 'close'
   }, {
-    type: 'separator'
-  }, {
+  //   type: 'separator'
+  // }, {
     label: 'Reopen Window',
     accelerator: 'CmdOrCtrl+Shift+T',
     enabled: false,

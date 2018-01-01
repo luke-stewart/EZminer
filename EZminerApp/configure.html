@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js"></script>
+    <script src="FileSaver.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
 
@@ -23,21 +23,7 @@
 
 <body>
     <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">EZ Miner</a>
-
-        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="configure.html">Configure</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="workers.html">Workers</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="help.html">Help</a>
-        </li>
-      </ul>
-    </div> -->
+        <a class="navbar-brand" href="app.html">EZ Miner</a>
 
     </nav>
     <div class="container">
@@ -48,18 +34,20 @@
                     <br>
                     <br>
                     <label for="address">Your Etherum address</label>
-                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
+                    <!-- placeholder temporarily removed for testing purposes -->
+                    <!-- placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961" -->
+                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" value="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
                     <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
                     <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
                 <div class="form-group ion-text">
                     <label for="address">Worker name</label>
-                    <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="(Optional) Useful if you have more than one computer mining">
+                    <input type="text" class="form-control p-2 foc mb-3 inputWorker" id="worker" placeholder="(Optional) Useful if you have more than one computer mining" value ="worker_bob">
                     <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
                 <div class="form-group ion-text">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down">
+                    <input type="text" class="form-control p-2 foc mb-3 inputEmail" id="email" placeholder="(Optional) Will send you alerts if your worker is down" value="luke@yahoo.com">
                     <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
                 <div class='row'>
