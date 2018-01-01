@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>EZ Miner App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="jquery-3.2.1.slim.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/app.css">
+
 </head>
 
 <body>
@@ -82,41 +83,41 @@
     var queryAvgEarnings = "https://api.nanopool.org/v1/eth/approximated_earnings/100";
     var queryEthPrice = "https://api.nanopool.org/v1/eth/prices";
 
-    $.ajax({
-      url: queryMinerInfo,
-      method: 'GET'
-    }).done(function (response) {
-      console.log("Workers are: " + response.data.workers[2]);
-      console.log("Current hashrate: " + response.data.hashrate);
-      console.log("24hr hashrate: " + response.data.avgHashrate.h24);
-      console.log("Unpaid balance : $" + response.data.balance);
+    $(document).ready(function () {
+      $.ajax({
+        url: queryMinerInfo,
+        method: 'GET'
+      }).done(function (response) {
+        console.log("Workers are: " + response.data.workers[2]);
+        console.log("Current hashrate: " + response.data.hashrate);
+        console.log("24hr hashrate: " + response.data.avgHashrate.h24);
+        console.log("Unpaid balance : $" + response.data.balance);
 
-      var currentHashrate = response.data.hashrate;
-      var dayHashrate = response.data.avgHashrate.h24;
-      var unpaidBalance = response.data.balance;
+        var currentHashrate = response.data.hashrate;
+        var dayHashrate = response.data.avgHashrate.h24;
+        var unpaidBalance = response.data.balance;
+      });
 
+      $.ajax({
+        url: queryAvgEarnings,
+        method: 'GET'
+      }).done(function (response) {
+        console.log("Daily Earnings are approx: $" + response.data.day.dollars);
+        var dailyEarnings = response.data.day.dollars;
+        $("#avgDailyEarn").dailyEarnings;
+      });
 
+      $.ajax({
+        url: queryEthPrice,
+        method: 'GET'
+      }).done(function (response) {
+        console.log("ETH price is: $" + response.data.price_usd);
+        var ethPrice = response.data.price_usd;
+        $("#ethPrice").ethPrice;
+      });
     });
 
-    $.ajax({
-      url: queryAvgEarnings,
-      method: 'GET'
-    }).done(function (response) {
-      console.log("Daily Earnings are approx: $" + response.data.day.dollars);
-      var dailyEarnings = response.data.day.dollars;
-      $("#avgDailyEarn").dailyEarnings;
-      
-    });
 
-    $.ajax({
-      url: queryEthPrice,
-      method: 'GET'
-    }).done(function (response) {
-      console.log("ETH price is: $" + response.data.price_usd);
-      var ethPrice = response.data.price_usd;
-      $("#ethPrice").ethPrice;
-
-    });
 
   </script>
 </body>
