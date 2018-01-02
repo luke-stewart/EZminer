@@ -34,8 +34,6 @@
                     <br>
                     <br>
                     <label for="address">Your Etherum address</label>
-                    <!-- placeholder temporarily removed for testing purposes -->
-                    <!-- placeholder="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961" -->
                     <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="ethereum" value="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
                     <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
                     <i class="ion-ios-close-outline i-keyword"></i>
@@ -103,6 +101,28 @@
         console.log(ethAddr);
         // Output all of the new information into the relevant HTML sections
         $("#ethAddress").text(ethAddr);
+
+
+        
+        // open dashboard
+        function createWindowConfig() {
+      // and load the index.html of the app.
+      mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'app.html'),
+        protocol: 'file:',
+        slashes: true
+      }))
+      // Emitted when the window is closed.
+      mainWindow.on('closed', function () {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null
+      })
+    }
+
+
+
       });
 
 
