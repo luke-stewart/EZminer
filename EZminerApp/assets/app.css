@@ -10,3 +10,7 @@
 .card {
     margin-top: 40px;
 }
+
+h6 {
+    display: inline;
+}

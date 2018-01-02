@@ -4,66 +4,49 @@
 <head>
   <meta charset="UTF-8">
   <title>EZ Miner App</title>
-  <script src="jquery-3.2.1.slim.min.js"></script>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/app.css">
-
 </head>
-
 <body>
   <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">EZ Miner</a>
-
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" id = "configure" href="configure.html">Configure</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="workers.html">Workers</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="help.html">Help</a>
-        </li>
-      </ul>
-    </div> -->
+    <a class="navbar-brand" href="#">EZ Miner Dashboard</a>
   </nav>
-
   <div class="container">
     <div class="span12" id="form">
       <div class="card rounded">
         <div class="card-body">
           <div class="form-group ion-text">
-            <Strong>Mining: </Strong>Ethereum (ETH)
+            <Strong>Mining: </Strong><h6>Ethereum (ETH)</h6>
           </div>
           <div class="form-group ion-text">
-            <Strong>Ethereum Price: $</Strong>
-            <p id="ethPrice"></p>
+            <Strong>Ethereum Price:  $</Strong>
+            <h6 id="ethPrice"></h6>
           </div>
           <div class="form-group ion-text">
             <Strong>Address: </Strong>
-            <p id="ethAddress"></p>
+            <h6 id="ethAddress"></h6>
           </div>
           <div class="form-group ion-text">
             <Strong>Worker(s): </Strong>
-            <p id="workers"></p>
+            <h6 id="workers"></h6>
           </div>
           <div class="form-group ion-text">
-            <Strong>Current Hashrate: </Strong>Mh/S
-            <p id="hashrate"></p>
+            <Strong>Current Hashrate: </Strong>
+            <h6 id="hashrate"></h6> Mh/S
           </div>
           <div class="form-group ion-text">
-            <Strong>Avg 24hr Hashrate: </Strong>Mh/S
-            <p id="24hHashrate"></p>
+            <Strong>Avg 24hr Hashrate: </Strong>
+            <h6 id="dayHashrate"></h6> Mh/S
           </div>
           <div class="form-group ion-text">
-            <Strong>Daily Earnings: $</Strong>
-            <p id="avgDailyEarn"></p>
+            <Strong>Daily Earnings:  $</Strong>
+            <h6 id="avgDailyEarn"></h6>
           </div>
           <div class="form-group ion-text">
-            <Strong>Unpaid balance: $</Strong>
-            <p id="balance"></p>
+            <Strong>Unpaid balance:  $</Strong>
+            <h6 id="balance"></h6>
           </div>
           <br>
           <div class='form-group ion-text'>
@@ -75,49 +58,8 @@
       </div>
     </div>
   </div>
-  <script>
-    // You can also require other files to run in this process
-    var $ = require('jQuery')
-    require('./renderer.js')
 
-    var queryMinerInfo = "https://api.nanopool.org/v1/eth/user/0x3eAe075ac6ad7F86d28F657822a5e09767CfC961";
-    var queryAvgEarnings = "https://api.nanopool.org/v1/eth/approximated_earnings/100";
-    var queryEthPrice = "https://api.nanopool.org/v1/eth/prices";
-    global.onload = function() {
-      $.ajax({
-        url: queryMinerInfo,
-        method: 'GET'
-      }).done(function (response) {
-        console.log(response.data.workers[1])
-        console.log("Workers are: " + response.data.workers[2]);
-        console.log("Current hashrate: " + response.data.hashrate);
-        console.log("24hr hashrate: " + response.data.avgHashrate.h24);
-        console.log("Unpaid balance : $" + response.data.balance);
-
-        var currentHashrate = response.data.hashrate;
-        var dayHashrate = response.data.avgHashrate.h24;
-        var unpaidBalance = response.data.balance;
-      });
-
-      $.ajax({
-        url: queryAvgEarnings,
-        method: 'GET'
-      }).done(function (response) {
-        console.log("Daily Earnings are approx: $" + response.data.day.dollars);
-        var dailyEarnings = response.data.day.dollars;
-        $("#avgDailyEarn").dailyEarnings;
-      });
-
-      $.ajax({
-        url: queryEthPrice,
-        method: 'GET'
-      }).done(function (response) {
-        console.log("ETH price is: $" + response.data.price_usd);
-        var ethPrice = response.data.price_usd;
-        $("#ethPrice").ethPrice;
-      });
-    }
-  </script>
+<script src="requests.js"></script>
 </body>
 
 </html>
