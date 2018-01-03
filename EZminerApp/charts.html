@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EZ Miner App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="FileSaver.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="assets/app.css">
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">EZ Miner Charts</a>
+    </nav>
+    <br>
+    <!-- TradingView Widget BEGIN -->
+    <div id="tv-medium-widget-ad893"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        new TradingView.MediumWidget({
+            "container_id": "tv-medium-widget-ad893",
+            "symbols": [
+                [
+                    "Ethereum",
+                    "COINBASE:ETHUSD|1y"
+                ],
+                [
+                    "Bitcoin",
+                    "COINBASE:BTCUSD|1y"
+                ],
+                [
+                    "ZCash",
+                    "KRAKEN:ZECUSD|1y"
+                ]
+            ],
+            "greyText": "Quotes by",
+            "gridLineColor": "#e9e9ea",
+            "fontColor": "#83888D",
+            "underLineColor": "rgba(147, 196, 125, 1)",
+            "trendLineColor": "rgba(39, 78, 19, 1)",
+            "width": "700px",
+            "height": "400px",
+            "locale": "en"
+        });
+    </script>
+    <!-- TradingView Widget END -->
+
+</body>
