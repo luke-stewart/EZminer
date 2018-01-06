@@ -3,11 +3,9 @@
   become: true
   vars: 
     document_root: /vagrant
-
-  tasks:
-    - name: update apt cache (apt-get update)
-      apt: update_cache=yes
-    - name: install curl
-      apt: name=curl state=present
+  
+  roles:
+    - common
+    - nginx
+    - node
     
-    - include: tasks/node.yml

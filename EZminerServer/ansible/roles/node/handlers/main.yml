@@ -1,0 +1,5 @@
+---
+- name: "start express server"
+  shell: forever start www
+  args:
+    chdir: /vagrant/node-server/bin

@@ -1,0 +1,30 @@
+---
+- name: "debian ngnix signing key"
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+
+- name: "debian nginx repository"
+  apt_repository:
+    repo: "{{item}}"
+  with_items:
+    - deb http://nginx.org/packages/mainline/{{ansible_distribution|lower}}/ {{ansible_distribution_release}} nginx
+    - deb-src http://nginx.org/packages/mainline/{{ansible_distribution|lower}}/ {{ansible_distribution_release}} nginx
+
+- name: "install nginx"
+  package:
+    name: nginx
+    state: latest
+
+- name: "delete default.conf"
+  file:
+    path: "/etc/nginx/conf.d/default.conf"
+    state: absent
+
+- name: "copy nigix config to sites-available folder"
+  copy:
+    src: ../files/nginx.conf
+    dest: /etc/nginx/conf.d/
+    owner: root
+    group: root
+    mode: 0664
+  notify: "start nginx"
