@@ -93,37 +93,36 @@
 
         // trying to pass the Ethereum address from the Configuration form to the dashboard display on app.html
         // currently not working...
-        $("#configButton").on("click", function(event) {
-        // prevent form from trying to submit/refresh the page
-        event.preventDefault();
-        // Capture User Inputs and store them into variables
-        var ethAddr = $("#ethereum").val().trim();
-        console.log(ethAddr);
-        // Output all of the new information into the relevant HTML sections
-        $("#ethAddress").text(ethAddr);
+        $("#configButton").on("click", function (event) {
+            // prevent form from trying to submit/refresh the page
+            console.log("config button was clicked");
+            event.preventDefault();
+            // Capture User Inputs and store them into variables
+            var ethAddr = $("#ethereum").val().trim();
+            console.log(ethAddr);
+            // Output all of the new information into the relevant HTML sections
+            $("#ethAddress").text(ethAddr);
 
+            // open dashboard !!!Not Working!!!
+            function createWindowConfig() {
+                // and load the index.html of the app.
+                console.log("createWindowConfig function is running");
+                mainWindow.loadURL(url.format({
+                    pathname: path.join(__dirname, 'app.html'),
+                    protocol: 'file:',
+                    slashes: true
+                }))
+                console.log("mainWindow function ran");
+                // Emitted when the window is closed.
+                mainWindow.on('closed', function () {
+                    // Dereference the window object, usually you would store windows
+                    // in an array if your app supports multi windows, this is the time
+                    // when you should delete the corresponding element.
+                    mainWindow = null
+                })
+            }
 
-        
-        // open dashboard
-        function createWindowConfig() {
-      // and load the index.html of the app.
-      mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'app.html'),
-        protocol: 'file:',
-        slashes: true
-      }))
-      // Emitted when the window is closed.
-      mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        mainWindow = null
-      })
-    }
-
-
-
-      });
+        });
 
 
         // attempting to save the configuration data and write to a start.bat text file
@@ -134,3 +133,4 @@
         // });
     </script>
 </body>
+
