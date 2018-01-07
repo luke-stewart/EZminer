@@ -1,4 +1,9 @@
 # EZ Miner Server
+## NGINX proxied Node server
+
+### Local Set up
+- Vagrant Debian/Strech 64
+- Provisioned with Ansible
 
 - To run the server locally launch vagrant
 - $ vagrant up

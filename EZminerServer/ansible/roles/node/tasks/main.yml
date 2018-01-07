@@ -13,9 +13,8 @@
 - name: isntall npm packages
   shell: npm i
   args:
-    chdir: ../../vagrant
+    chdir: /vagrant
 
-# - name: start node
-#   shell: npm start
-#   args:
-#     chdir: ../../vagrant
+- name: install forever
+  shell: npm i forever -g
+  notify: "start express server"
