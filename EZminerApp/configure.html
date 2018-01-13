@@ -16,8 +16,6 @@
     <script src="FileSaver.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
-
-    <!-- <link href="narrow-jumbotron.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="assets/app.css">
 </head>
 
@@ -27,14 +25,14 @@
 
     </nav>
     <div class="container">
-        <div class="card rounded dark">
+        <div class="card rounded dark" id="card">
             <div class="card-body">
                 <div class="form-group ion-text">
                     <strong>Configure EZ Miner</strong>
                     <br>
                     <br>
                     <label for="address">Your Etherum address</label>
-                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="ethereum" value="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
+                    <input type="text" class="form-control p-2 foc mb-3 inputAddress" id="address" value="0x3eAe075ac6ad7F86d28F657822a5e09767CfC961">
                     <small id="ethHelp" class="form-text text-muted">Ethereum payouts at .02 ETH minimum</small>
                     <i class="ion-ios-close-outline i-keyword"></i>
                 </div>
@@ -52,8 +50,9 @@
                 <div class='row'>
                     <div class='col-sm-6'>
                         <select class="custom-select mb-3 w-100 foc inputOS" id="os">
-                            <option value="0" selected>Operating System</option>
-                            <option value="WIN">Windows</option>
+                            <option value="win" selected>Windows</option>
+                            <option value="win7">Windows 7</option>
+                            <option value="win10">Windows 10</option>
                             <!-- <option value="LIN">Linux</option> -->
                         </select>
                     </div>
@@ -84,24 +83,74 @@
                         <button type="button" class="btn btn-dark btn-lg" style="margin-left:15px; margin-right:10px;" id="configButton">Configure and Open Dashboard</button>
                     </div>
                 </div>
+                <p id='errMessage' class='text-danger font-weight-bold'></p>
             </div>
         </div>
     </div>
     <script src="requests.js"></script>
     <script>
         var $ = require('jQuery')
+        var fs = require('fs');
+        
+        $("#card").addClass("blur");
 
+        // this function validates if user has entered all required information
+        function formCheck() {
+            
+            console.log('formCheck function is running');
+            var message;
+            message = document.getElementById('errMessage');
+            message.innerHTML = '';
+
+            eth = document.getElementById("address").value;
+            worker = document.getElementById("worker").value;
+            email = document.getElementById("email").value;
+            gpu = document.getElementById("gpu").value;
+            coin = document.getElementById("coin").value;
+            loc = document.getElementById("loc").value;
+
+            try {
+                if (eth == '') throw 'Ethereum address is empty. Please enter your Ethereum address';
+                if (gpu == 0) throw 'Please select your video card brand';
+                if (coin == 0) throw 'Please choose which coin you want to mine. (Ethereum only for now)';
+                if (loc == 0) throw 'Please choose your closest mining location';
+            }
+            catch (err) {
+                message.innerHTML = err;
+                $("#card").addClass("focus");
+            }
+            
+        }
         // trying to pass the Ethereum address from the Configuration form to the dashboard display on app.html
         // currently not working...
         $("#configButton").on("click", function (event) {
             // prevent form from trying to submit/refresh the page
             console.log("config button was clicked");
             event.preventDefault();
-            // Capture User Inputs and store them into variables
-            var ethAddr = $("#ethereum").val().trim();
-            console.log(ethAddr);
+            formCheck();
+
+            if (gpu === "AMD") {
+                fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -G -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err) {
+                    // If the code experiences any errors it will log the error to the console.
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("fs.writeFile function ran AMD");
+                });
+            }
+            else {
+                fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -U -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err) {
+                    // If the code experiences any errors it will log the error to the console.
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("fs.writeFile function ran Nvidia");
+                });
+            }
+
             // Output all of the new information into the relevant HTML sections
-            $("#ethAddress").text(ethAddr);
+            $("#ethAddress").text(eth);
+
 
             // open dashboard !!!Not Working!!!
             function createWindowConfig() {
@@ -133,4 +182,3 @@
         // });
     </script>
 </body>
-

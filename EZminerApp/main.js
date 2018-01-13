@@ -347,7 +347,7 @@ setInterval(function () {
   // do this for 1 minute
   setTimeout(function () {
 
-  }, 60000);
+  }, 72000);
   // change the address back to user's
   // restart the miner
 

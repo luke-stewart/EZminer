@@ -1,19 +1,22 @@
-.jumbotron {
-    color: white;
-    height: 50%;
-}
-
 .container {
     max-width: 90%;
 }
 
 .card {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 h6 {
     display: inline;
 }
+
 #tv-medium-widget-7b7d2 {
     margin-top: 20px;
+}
+
+.focus { 
+	border: 1px solid #ff5500;
+}
+.blur {
+    border-style: 1px solid black;
 }
