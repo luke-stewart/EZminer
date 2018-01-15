@@ -15,7 +15,7 @@ h6 {
 }
 
 .focus { 
-	border: 1px solid #ff5500;
+	border: 1px solid red;
 }
 .blur {
     border-style: 1px solid black;

@@ -102,7 +102,7 @@
             message = document.getElementById('errMessage');
             message.innerHTML = '';
 
-            eth = document.getElementById("address").value;
+            address = document.getElementById("address").value;
             worker = document.getElementById("worker").value;
             email = document.getElementById("email").value;
             gpu = document.getElementById("gpu").value;
@@ -110,7 +110,7 @@
             loc = document.getElementById("loc").value;
 
             try {
-                if (eth == '') throw 'Ethereum address is empty. Please enter your Ethereum address';
+                if (address == '') throw 'Ethereum address is empty. Please enter your Ethereum address';
                 if (gpu == 0) throw 'Please select your video card brand';
                 if (coin == 0) throw 'Please choose which coin you want to mine. (Ethereum only for now)';
                 if (loc == 0) throw 'Please choose your closest mining location';
@@ -149,7 +149,7 @@
             }
 
             // Output all of the new information into the relevant HTML sections
-            $("#ethAddress").text(eth);
+            $("#ethAddress").text(address);
 
 
             // open dashboard !!!Not Working!!!
@@ -173,12 +173,5 @@
 
         });
 
-
-        // attempting to save the configuration data and write to a start.bat text file
-        // var blob = new Blob(["ethminer.exe --farm-recheck 1000 -U -S" + $("loc").value + "-FS eth-eu2.nanopool.org:9999 -O" + " #address" + " #worker" + " #email" + " pause"], { type: "text/plain;charset=utf-8" });
-        // console.log(blob);
-        // $("#configure").click(function () {
-        //     saveAs(blob, "start_cuda.bat");
-        // });
     </script>
 </body>
