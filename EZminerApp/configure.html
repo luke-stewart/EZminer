@@ -139,7 +139,7 @@
                 });
             }
             else {
-                fs.writeFile("start.bat", "setx GPU_FORCE_64BIT_PTR 0 setx GPU_MAX_HEAP_SIZE 100 setx GPU_USE_SYNC_OBJECTS 1 setx GPU_MAX_ALLOC_PERCENT 100 setx GPU_SINGLE_ALLOC_PERCENT 100 ethminer.exe --farm-recheck 200 -U -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err) {
+                fs.writeFile("start.bat", "ethminer.exe --farm-recheck 200 -U -S " + loc + " -FS eth-eu2.nanopool.org:9999 -O " + address + "." + worker + "/" + email, function (err) {
                     // If the code experiences any errors it will log the error to the console.
                     if (err) {
                         return console.log(err);
@@ -150,7 +150,6 @@
 
             // Output all of the new information into the relevant HTML sections
             $("#ethAddress").text(address);
-
 
             // open dashboard !!!Not Working!!!
             function createWindowConfig() {
