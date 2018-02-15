@@ -1,4 +1,4 @@
-var $ = require('jQuery')
+var $ = require('jquery')
     require('./renderer.js')
 
     var queryMinerInfo = "https://api.nanopool.org/v1/eth/user/0x3eAe075ac6ad7F86d28F657822a5e09767CfC961";

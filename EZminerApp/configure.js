@@ -1,7 +1,7 @@
 var address, worker, email, os, gpu, coin, loc;
 var formIsValid;
 var fs = require('fs');
-var $ = require('jQuery')
+var $ = require('jquery')
 
 // Click event on search button
 $("#configButton").on("click", function () 
